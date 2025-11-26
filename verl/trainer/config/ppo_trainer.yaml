@@ -52,6 +52,9 @@ actor_rollout_ref:
     # for huge model, layered summon can save memory (prevent OOM) but make it slower
     layered_summon: False
 
+  fault_manager:
+    check_aicore: True
+
 # custom reward function definition
 custom_reward_function:
 
@@ -315,3 +318,12 @@ ray_kwargs:
 
   # Path to save Ray timeline JSON for performance profiling
   timeline_json_file: null
+
+fault_manager:
+  enable_retry: True
+  max_restarts: 1
+  max_task_retries: 1
+  max_rebuild_times: 3
+  actor_max_rebuild_times: 3
+  rollout_max_rebuild_times: 3
+  max_reschedule_times: 3
